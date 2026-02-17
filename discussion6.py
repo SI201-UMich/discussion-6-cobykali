@@ -61,18 +61,18 @@ def load_results(self, table):
 ###############################################################################
 
     def horse_fastest_race(self, horse):
-        '''
-        Given the name of a horse, return its fastest race and time.
-        If the horse does not exist, return (None, 999.9)
+        if horse not in self.race_dict:
+            return (None, 999.9)
 
-        Parameters:
-            horse, name of a race: str
+    fastest_race = None
+    fastest_time = 999.9
 
-        Returns:
-            tuple of fastest race name and the time
-            EXAMPLE: ('Teio Sho', 14.8)
-        '''
-        pass
+    for race_name, time in self.race_dict[horse].items():
+        if time < fastest_time:
+            fastest_time = time
+            fastest_race = race_name
+
+    return (fastest_race, fastest_time)
 
 ###############################################################################
 ##### TASK 3
