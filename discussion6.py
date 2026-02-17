@@ -91,14 +91,19 @@ def load_results(self, table):
 ###############################################################################
 
     def get_average_time(self):
-        '''
-        Calculate the average race time for each horse.
+        averages = {}
 
-        Returns:
-            A dictionary with each horse and their average time.
-            EXAMPLE: {'Gold Ship': 16.5, 'Daiwa Scarlet': 17.2}
-        '''
-        pass
+    for horse, race_times in self.race_dict.items():
+        total = 0.0
+        count = 0
+
+        for time in race_times.values():
+            total += time
+            count += 1
+
+        averages[horse] = total / count
+
+    return averages
 
 ###############################################################################
 ##### DO NOT MODIFY THE UNIT TESTS BELOW!
